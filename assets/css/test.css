@@ -1,0 +1,40 @@
+
+
+
+@media only screen and (min-width: 300px)
+{
+	#alpha{width:100%}
+	#beta,.countsocial,.fbtopbutton,.followmebuttons{display:none}
+
+    /*h1, h2, h3{font-size:22px}*/
+
+
+}
+
+@media only screen and (min-width: 768px){
+
+  #alpha{width:694px}
+	#beta{
+    display: block;
+    margin-left: 70px;
+    width: 350px;
+  }
+
+  h3{ font-size: 1.7em; }
+  p{  font-size: 1.3em; }
+
+.takealook{display:block}
+}
+@media only screen and (max-width: 768px) {
+#beta{display:none}
+h3{ font-size: 1.4em; }
+p{  font-size: 1.1em; }
+}
+
+@media only screen and (max-width: 632px) {
+#alpha{padding-left:10px}
+
+}
+
+h3, h4{line-height: 1.4em;}
+p{line-height: 1.4em;}
