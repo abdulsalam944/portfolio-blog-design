@@ -600,6 +600,7 @@ div#maincontent {
     background: gray;
     padding: 6%;
     margin-top: 10px;
+    margin-bottom: 20px;
     position: relative;
 }
 
@@ -790,3 +791,9 @@ ul.tags li a {
       border-color: #d6976d;
       background-color: #d6976d;
 }
+
+.fixClass{
+		position: fixed;
+	    right: 0;
+	    bottom: 200;
+	}
