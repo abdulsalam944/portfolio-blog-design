@@ -117,7 +117,7 @@
                       <div class="col-xs-12">
 
                         <?php
-                        $arr = array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20);
+                        $arr = array(1,2,3,4,5,6,7,8,9,10,11,12,13);
                         foreach ($arr as $posts) { ?>
 
                           <div class="col-md-6 col-xs-12">
@@ -148,7 +148,8 @@
 
 
       <div id="beta" class="well col-xs-12 col-sm-4 col-md-4 col-lg-4">
-            <div class="module-search module">
+         <div class="sidebar stick" style="width: 100%; position: relative;">
+            <div class="module-search module" id="module_search">
                 <div class="module-content">
                  <h4>Learn with me</h4>
                  <form>
@@ -161,12 +162,12 @@
                  </form>
                </div>
             </div>
-            <div class="module-search module">
+            <div class="module-search module" id="module_youtube">
                 <div class="module-content">
                   <iframe width="100%" height="215" src="//www.youtube.com/embed/4KvXrbabutg" frameborder="0" allowfullscreen=""></iframe>
                </div>
             </div>
-            <div class="module-twitter module text-center">
+            <div class="module-twitter module text-center" id="module_twitter">
                 <div class="module-content">
                   <img src="assets/image/me-twitter.jpg" class="img-responsive" />
                   <h3>Sagnik Chakraborti</h3>
@@ -174,7 +175,7 @@
                   <button type="button" class="follow-btn"><span>Follow</span></button>
                </div>
             </div>
-            <div class="module-posts module">
+            <div class="module-posts module" id="module_posts">
                 <div class="module-content">
                     <ul class="thumbnails" style="list-style: none; padding:0;">
                   <?php
@@ -207,7 +208,7 @@
                   <h1>Categories</h1>
                </div>
             </div> -->
-            <div class="module-tags module">
+            <div class="module-tags module" id="module_tags">
                 <h4 class="module-header">Tag Cloud</h4>
                 <div class="module-content">
                   <div class="tag-cloud">
@@ -225,6 +226,7 @@
 
 
       </div>
+     </div>
     </div>
 
 
@@ -348,7 +350,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        Copyright &copy; Your Website 2016
+                        Copyright &copy; Sagnik Chakraborti 2017
+                        <p style="font-size:12px; line-height: 1.8px; margin-top:10px;">Helped designing by <a href="#">Adbul Salam</a></p>
                     </div>
                 </div>
             </div>
@@ -384,10 +387,14 @@
 
         var generalSidebarHeight = $sticky.innerHeight();
         var stickyTop = $sticky.offset().top;
+        var stickyHeight = generalSidebarHeight + stickyTop;
+        var windowHeight = $(window).height();
         var stickOffset = 0;
         var stickyStopperPosition = $stickyrStopper.offset().top;
         var stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset;
         var diff = stopPoint + stickOffset;
+
+
 
         $(window).scroll(function(){ // scroll event
           var windowTop = $(window).scrollTop(); // returns number
@@ -403,6 +410,9 @@
 
       }
     });
+
+
+
 
   </script>
 
