@@ -114,7 +114,7 @@
 
                       </div>
 
-                      <div class="col-xs-12">
+                      <div class="col-xs-12 newLayout">
 
                         <?php
                         $arr = array(1,2,3,4,5,6,7,8,9,10,11,12,13);
@@ -140,6 +140,7 @@
 
 
                     </div>
+                    <button class="btn btn-primary " id="addMore">Add More</button>
                   </div>
               </div>
           </section>
@@ -378,38 +379,91 @@
     <script type="text/javascript">
 
 
+    // $( document ).ready(function() {
+    //   console.log( "document ready!" );
+
+    //   var $sticky = $('#beta');
+    //   var $stickyrStopper = $('.sticky-stopper');
+    //   if (!!$sticky.offset()) { // make sure ".sticky" element exists
+
+    //     var generalSidebarHeight = $sticky.innerHeight();
+    //     var stickyTop = $sticky.offset().top;
+    //     var stickOffset = 0;
+    //     var stickyStopperPosition = $stickyrStopper.offset().top;
+    //     var stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset;
+    //     var diff = stopPoint + stickOffset;
+
+    //     $(window).scroll(function(){ // scroll event
+    //       var windowTop = $(window).scrollTop(); // returns number
+
+    //       if (stopPoint < windowTop) {
+    //           $sticky.css({ position: 'absolute', top: diff, right: '106px' });
+    //       } else if (stickyTop < windowTop+stickOffset) {
+    //           $sticky.css({ position: 'fixed', top: stickOffset });
+    //       } else {
+    //           $sticky.css({position: 'absolute', top: 'initial', right: '106px'});
+    //       }
+    //     });
+
+    //   }
+    // });
     $( document ).ready(function() {
-      console.log( "document ready!" );
 
-      var $sticky = $('#beta');
-      var $stickyrStopper = $('.sticky-stopper');
-      if (!!$sticky.offset()) { // make sure ".sticky" element exists
+     var $sticky = $('#beta');
+     var $stickyrStopper = $('.sticky-stopper');
+     if (!!$sticky.offset()) { // make sure ".sticky" element exists
 
-        var generalSidebarHeight = $sticky.innerHeight();
+       var generalSidebarHeight = $sticky.innerHeight();
+
         var stickyTop = $sticky.offset().top;
-        var stickyHeight = generalSidebarHeight + stickyTop;
-        var windowHeight = $(window).height();
-        var stickOffset = 0;
-        var stickyStopperPosition = $stickyrStopper.offset().top;
-        var stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset;
-        var diff = stopPoint + stickOffset;
+       var stickyHeight = generalSidebarHeight + stickyTop;
+
+       var windowHeight = $(window).height();
+
+       var stickOffset = stickyHeight-window.innerHeight;
+       var stickyStopperPosition = $stickyrStopper.offset().top;
+       var stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset - $("#mainNav").innerHeight();
+       var diff = stopPoint+stickOffset+ $("#mainNav").innerHeight();
+
+
+       $(window).scroll(function(){ // scroll event
+         var windowTop = $(window).scrollTop(); // returns number
+          console.log(stopPoint);
+         if (stickyStopperPosition < windowHeight + windowTop) {
+            console.log('a');
+             $sticky.css({ position: 'absolute', top: diff, right: '106px' });
+         } else if (stickyHeight < windowHeight+windowTop ) {
+            console.log('b');
+             $sticky.css({ position: 'fixed', top: '-'+stopPoint+'px' });
+         } else {
+          console.log('c');
+             $sticky.css({position: 'absolute', top: 'initial', right: '106px'});
+         }
+       });
+
+     }
+     $("#addMore").click(function(){
+        var html = '<div class="col-md-6 col-xs-12"><div class="thumbnails small"><span class="date">Wednesday, June 28, 2017</span><div class="thumbnail right-caption span4"><div class="image"><img class="img-responsive" src="http://placehold.it/650x350" alt=""></div><div class="caption"><h4>Ionic 3 and Angular 4: Adding Custom Fonts...</h4><p>Desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></div></div></div></div>';
+        $(".newLayout").append(html);
+
+         generalSidebarHeight = $sticky.innerHeight();
+
+       stickyTop = $sticky.offset().top;
+       stickyHeight = generalSidebarHeight + stickyTop;
+
+       windowHeight = $(window).height();
+
+       stickOffset = stickyHeight-window.innerHeight;
+       stickyStopperPosition = $stickyrStopper.offset().top;
+       stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset - $("#mainNav").innerHeight();
+       diff = stopPoint+stickOffset+ $("#mainNav").innerHeight();
 
 
 
-        $(window).scroll(function(){ // scroll event
-          var windowTop = $(window).scrollTop(); // returns number
+     });
+   });
 
-          if (stopPoint < windowTop) {
-              $sticky.css({ position: 'absolute', top: diff, right: '106px' });
-          } else if (stickyTop < windowTop+stickOffset) {
-              $sticky.css({ position: 'fixed', top: stickOffset });
-          } else {
-              $sticky.css({position: 'absolute', top: 'initial', right: '106px'});
-          }
-        });
 
-      }
-    });
 
 
 
