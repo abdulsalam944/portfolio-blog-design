@@ -45,7 +45,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">Sagnik Chakraborti</a>
+                <a class="navbar-brand" href="#page-top">John Doe</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -81,9 +81,9 @@
         <div class="container" id="maincontent" tabindex="-1">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="img-responsive dp-image" src="assets/image/ms-icon-150x150.png" alt="">
+                    <img class="img-responsive dp-image" src="http://placehold.it/150x150" alt="">
                     <div class="intro-text">
-                        <h1 class="name">Sagnik Chakraborti</h1>
+                        <h1 class="name">John Doe</h1>
                         <hr class="star-light">
                         <span class="skills">Programmer - Blogger - Gamer</span>
                     </div>
@@ -117,7 +117,7 @@
                       <div class="col-xs-12 newLayout">
 
                         <?php
-                        $arr = array(1,2,3,4,5,6,7,8,9,10,11,12,13);
+                        $arr = array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20);
                         foreach ($arr as $posts) { ?>
 
                           <div class="col-md-6 col-xs-12">
@@ -149,8 +149,7 @@
 
 
       <div id="beta" class="well col-xs-12 col-sm-4 col-md-4 col-lg-4">
-         <div class="sidebar stick" style="width: 100%; position: relative;">
-            <div class="module-search module" id="module_search">
+            <div class="module-search module">
                 <div class="module-content">
                  <h4>Learn with me</h4>
                  <form>
@@ -163,20 +162,20 @@
                  </form>
                </div>
             </div>
-            <div class="module-search module" id="module_youtube">
+            <div class="module-search module">
                 <div class="module-content">
                   <iframe width="100%" height="215" src="//www.youtube.com/embed/4KvXrbabutg" frameborder="0" allowfullscreen=""></iframe>
                </div>
             </div>
-            <div class="module-twitter module text-center" id="module_twitter">
+            <div class="module-twitter module text-center">
                 <div class="module-content">
-                  <img src="assets/image/me-twitter.jpg" class="img-responsive" />
-                  <h3>Sagnik Chakraborti</h3>
-                  <p>@nickborti</p>
+                  <img src="http://placehold.it/150x150" class="img-responsive" />
+                  <h3>John Doe</h3>
+                  <p>@johndoe</p>
                   <button type="button" class="follow-btn"><span>Follow</span></button>
                </div>
             </div>
-            <div class="module-posts module" id="module_posts">
+            <div class="module-posts module">
                 <div class="module-content">
                     <ul class="thumbnails" style="list-style: none; padding:0;">
                   <?php
@@ -209,7 +208,7 @@
                   <h1>Categories</h1>
                </div>
             </div> -->
-            <div class="module-tags module" id="module_tags">
+            <div class="module-tags module">
                 <h4 class="module-header">Tag Cloud</h4>
                 <div class="module-content">
                   <div class="tag-cloud">
@@ -227,7 +226,6 @@
 
 
       </div>
-     </div>
     </div>
 
 
@@ -351,8 +349,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        Copyright &copy; Sagnik Chakraborti 2017
-                        <p style="font-size:12px; line-height: 1.8px; margin-top:10px;">Helped designing by <a href="#">Adbul Salam</a></p>
+                        Copyright &copy; Your Website 2016
                     </div>
                 </div>
             </div>
@@ -407,6 +404,24 @@
 
     //   }
     // });
+    var adjustScroll = function($sticky, $stickyrStopper, stickyTop, stickyHeight, windowHeight, stickOffset, stickyStopperPosition, diff, stopPoint, callback){
+      var windowTop = $(window).scrollTop(); // returns number
+       console.log(stopPoint);
+      if (stickyStopperPosition < windowHeight + windowTop) {
+         console.log('a');
+          $sticky.css({ position: 'absolute', top: diff, right: '106px' });
+      } else if (stickyHeight < windowHeight+windowTop ) {
+         console.log('b');
+          $sticky.css({ position: 'fixed', top: '-'+stopPoint+'px' });
+      } else {
+       console.log('c');
+          $sticky.css({position: 'absolute', top: 'initial', right: '106px'});
+      }
+
+      callback();
+    }
+
+
     $( document ).ready(function() {
 
      var $sticky = $('#beta');
@@ -415,7 +430,7 @@
 
        var generalSidebarHeight = $sticky.innerHeight();
 
-        var stickyTop = $sticky.offset().top;
+       var stickyTop = $sticky.offset().top;
        var stickyHeight = generalSidebarHeight + stickyTop;
 
        var windowHeight = $(window).height();
@@ -427,18 +442,9 @@
 
 
        $(window).scroll(function(){ // scroll event
-         var windowTop = $(window).scrollTop(); // returns number
-          console.log(stopPoint);
-         if (stickyStopperPosition < windowHeight + windowTop) {
-            console.log('a');
-             $sticky.css({ position: 'absolute', top: diff, right: '106px' });
-         } else if (stickyHeight < windowHeight+windowTop ) {
-            console.log('b');
-             $sticky.css({ position: 'fixed', top: '-'+stopPoint+'px' });
-         } else {
-          console.log('c');
-             $sticky.css({position: 'absolute', top: 'initial', right: '106px'});
-         }
+         adjustScroll($sticky, $stickyrStopper, stickyTop, stickyHeight, windowHeight, stickOffset, stickyStopperPosition, diff, stopPoint, function(){
+           console.log("adjusted sidebar 1");
+         })
        });
 
      }
@@ -446,25 +452,26 @@
         var html = '<div class="col-md-6 col-xs-12"><div class="thumbnails small"><span class="date">Wednesday, June 28, 2017</span><div class="thumbnail right-caption span4"><div class="image"><img class="img-responsive" src="http://placehold.it/650x350" alt=""></div><div class="caption"><h4>Ionic 3 and Angular 4: Adding Custom Fonts...</h4><p>Desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></div></div></div></div>';
         $(".newLayout").append(html);
 
-         generalSidebarHeight = $sticky.innerHeight();
+        var generalSidebarHeight = $sticky.innerHeight();
 
-       stickyTop = $sticky.offset().top;
-       stickyHeight = generalSidebarHeight + stickyTop;
+        var stickyTop = $sticky.offset().top;
+        var stickyHeight = generalSidebarHeight + stickyTop;
 
-       windowHeight = $(window).height();
+        var windowHeight = $(window).height();
 
-       stickOffset = stickyHeight-window.innerHeight;
-       stickyStopperPosition = $stickyrStopper.offset().top;
-       stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset - $("#mainNav").innerHeight();
-       diff = stopPoint+stickOffset+ $("#mainNav").innerHeight();
+        var stickOffset = stickyHeight-window.innerHeight;
+        var stickyStopperPosition = $stickyrStopper.offset().top;
+        var stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset - $("#mainNav").innerHeight();
+        var diff = stopPoint+stickOffset+ $("#mainNav").innerHeight();
+
+        adjustScroll($sticky, $stickyrStopper, stickyTop, stickyHeight, windowHeight, stickOffset, stickyStopperPosition, diff, stopPoint, function(){
+          console.log('adjusted sidebar 2!');
+        })
 
 
 
      });
    });
-
-
-
 
 
 
