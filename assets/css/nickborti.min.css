@@ -339,7 +339,8 @@ form .row:first-child .floating-label-form-group {
 }
 
 footer {
-    color: #fff
+    color: #fff;
+    margin-top: 30px;
 }
 
 footer h3 {
@@ -800,4 +801,10 @@ ul.tags li a {
 
 .page-layout{
       min-height: 1961px;
+      position: relative;
+}
+
+.btn#addMore{
+  margin: 0 auto;
+  display: block;
 }

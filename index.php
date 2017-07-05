@@ -13,7 +13,7 @@
         </div>
     </header>
 
-    <div class="container page-layout" style="position: relative;">
+    <div class="container page-layout">
       <div id="alpha" class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
 
           <section id="portfolio">
