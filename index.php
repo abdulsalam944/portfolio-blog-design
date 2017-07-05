@@ -404,14 +404,14 @@
 
     //   }
     // });
-    var adjustScroll = function($sticky, $stickyrStopper, stickyTop, stickyHeight, windowHeight, stickOffset, stickyStopperPosition, diff, stopPoint, callback){
+   function adjustScroll($sticky, $stickyrStopper, stickyTop, stickyHeight, windowHeight, stickOffset, stickyStopperPosition, diff, stopPoint, callback){
       var windowTop = $(window).scrollTop(); // returns number
-       console.log(stopPoint);
+      //  console.log(stopPoint);
       if (stickyStopperPosition < windowHeight + windowTop) {
-         console.log('a');
+          console.log('a');
           $sticky.css({ position: 'absolute', top: diff, right: '106px' });
       } else if (stickyHeight < windowHeight+windowTop ) {
-         console.log('b');
+          console.log('b');
           $sticky.css({ position: 'fixed', top: '-'+stopPoint+'px' });
       } else {
        console.log('c');
@@ -419,7 +419,7 @@
       }
 
       callback();
-    }
+    };
 
 
     $( document ).ready(function() {
@@ -433,44 +433,70 @@
        var stickyTop = $sticky.offset().top;
        var stickyHeight = generalSidebarHeight + stickyTop;
 
-       var windowHeight = $(window).height();
+       var windowHeight = $(document).height();
 
-       var stickOffset = stickyHeight-window.innerHeight;
+       var stickOffset = stickyHeight-windowHeight;
        var stickyStopperPosition = $stickyrStopper.offset().top;
        var stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset - $("#mainNav").innerHeight();
        var diff = stopPoint+stickOffset+ $("#mainNav").innerHeight();
 
-
+       var newLayoutHeight = $(".newLayout").height();
        $(window).scroll(function(){ // scroll event
          adjustScroll($sticky, $stickyrStopper, stickyTop, stickyHeight, windowHeight, stickOffset, stickyStopperPosition, diff, stopPoint, function(){
            console.log("adjusted sidebar 1");
+           console.log(" new layout height " + newLayoutHeight);
+           console.log("window height " + windowHeight);
          })
        });
 
      }
-     $("#addMore").click(function(){
-        var html = '<div class="col-md-6 col-xs-12"><div class="thumbnails small"><span class="date">Wednesday, June 28, 2017</span><div class="thumbnail right-caption span4"><div class="image"><img class="img-responsive" src="http://placehold.it/650x350" alt=""></div><div class="caption"><h4>Ionic 3 and Angular 4: Adding Custom Fonts...</h4><p>Desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></div></div></div></div>';
-        $(".newLayout").append(html);
 
-        var generalSidebarHeight = $sticky.innerHeight();
-
-        var stickyTop = $sticky.offset().top;
-        var stickyHeight = generalSidebarHeight + stickyTop;
-
-        var windowHeight = $(window).height();
-
-        var stickOffset = stickyHeight-window.innerHeight;
-        var stickyStopperPosition = $stickyrStopper.offset().top;
-        var stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset - $("#mainNav").innerHeight();
-        var diff = stopPoint+stickOffset+ $("#mainNav").innerHeight();
-
-        adjustScroll($sticky, $stickyrStopper, stickyTop, stickyHeight, windowHeight, stickOffset, stickyStopperPosition, diff, stopPoint, function(){
-          console.log('adjusted sidebar 2!');
-        })
+   });
 
 
+   $("#addMore").click(function(){
+      var html = '<div class="col-md-6 col-xs-12"><div class="thumbnails small"><span class="date">Wednesday, June 28, 2017</span><div class="thumbnail right-caption span4"><div class="image"><img class="img-responsive" src="http://placehold.it/650x350" alt=""></div><div class="caption"><h4>Ionic 3 and Angular 4: Adding Custom Fonts...</h4><p>Desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></div></div></div></div><div class="col-md-6 col-xs-12"><div class="thumbnails small"><span class="date">Wednesday, June 28, 2017</span><div class="thumbnail right-caption span4"><div class="image"><img class="img-responsive" src="http://placehold.it/650x350" alt=""></div><div class="caption"><h4>Ionic 3 and Angular 4: Adding Custom Fonts...</h4><p>Desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></div></div></div></div>';
 
-     });
+      $(".newLayout").append(html);
+
+       var newLayoutHeight = $(".newLayout").height();
+       console.log(" new layout height 2 " + newLayoutHeight);
+
+
+      // setTimeout(function(){
+
+          var $sticky = $('#beta');
+          var $stickyrStopper = $('.sticky-stopper');
+          var generalSidebarHeight = $sticky.innerHeight();
+
+          var stickyTop = $sticky.offset().top;
+          var stickyHeight = generalSidebarHeight + stickyTop;
+
+          // var windowHeight = $(window).height();
+          var windowHeight = $(document).height();
+          console.log("window height 2 " + windowHeight);
+
+          var stickOffset = stickyHeight-windowHeight;
+          var stickyStopperPosition = $stickyrStopper.offset().top;
+          var stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset - $("#mainNav").innerHeight();
+          var diff = stopPoint+stickOffset+ $("#mainNav").innerHeight();
+
+          console.log("gonna hit");
+          console.log(generalSidebarHeight + ' ' + stickyTop + ' ' + stickyHeight + ' ' + windowHeight + ' ' + stickOffset + ' ' + stickyStopperPosition + ' ' + stopPoint + ' ' + diff);
+
+
+          adjustScroll($sticky, $stickyrStopper, stickyTop, stickyHeight, windowHeight, stickOffset, stickyStopperPosition, diff, stopPoint, function(){
+            console.log('adjusted sidebar 2!');
+            adjustScroll($sticky, $stickyrStopper, stickyTop, stickyHeight, windowHeight, stickOffset, stickyStopperPosition, diff, stopPoint, function(){
+              console.log('adjusted sidebar again');
+            });
+          })
+
+
+    // },2000);
+
+
+
    });
 
 
