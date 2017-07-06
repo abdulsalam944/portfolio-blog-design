@@ -45,7 +45,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">John Doe</a>
+                <a class="navbar-brand" href="/portfolio-blog-design">John Doe</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -55,19 +55,19 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a href="#">Tutorials</a>
+                        <a href="category.php">Tutorials</a>
                     </li>
                     <li>
-                        <a href="#">News</a>
+                        <a href="category.php">News</a>
                     </li>
                     <li>
-                        <a href="#">Repo</a>
+                        <a href="category.php">Repo</a>
                     </li>
                     <li>
                         <a href="about.php">About</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="contact.php">Contact</a>
                     </li>
                 </ul>
             </div>
