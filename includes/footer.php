@@ -205,9 +205,20 @@ $( document ).ready(function() {
 
         // lockstiky while scroll
         if(footerOffsetTop < currentScrollPosBottom){
-          console.log('Sticky touces to bottom');
 
-          $("#beta").css({ position:'absolute', top: 'inherit', bottom: '0px', left:' inherit', right : '0px' });
+         // console.log('Sticky touces to bottom');
+
+          var csss = {              
+            position:'absolute', 
+            top: 'inherit', 
+            left : 'initial',  
+            bottom: '0px', 
+            right:' 15px'
+          };
+         
+          //console.log(csss);
+
+          $("#beta").css(csss);
 
         }else if(stickyEndPos < currentScrollPosBottom){
           console.log('Fixed while scroll');
@@ -215,6 +226,8 @@ $( document ).ready(function() {
           var topOffset = stickyHeight-$(window).height();
           console.log(topOffset);
           $("#beta").css({ position:'fixed', top: '-'+topOffset+'px', left : stickyLeftOffset-parseInt($("#beta").css('margin-left').replace('px',''))+'px' });
+
+         // $("#beta").css({ position:'fixed', top: '-'+topOffset+'px', right : '0px' });
 
         }else{
           console.log('Normal Time');

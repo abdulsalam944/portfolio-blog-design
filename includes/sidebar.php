@@ -1,4 +1,4 @@
-<div id="beta" class="well col-xs-12 col-sm-4 col-md-4 col-lg-4">
+<div id="beta" class="well col-xs-12 col-sm-4 col-md-4 col-lg-4 pull-right">
       <div class="module-search module">
           <div class="module-content">
            <h4>Learn with me</h4>
